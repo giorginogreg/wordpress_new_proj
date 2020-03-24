@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  # Attempt to load files from production if
+  # they're not in our local version
+
+	RewriteCond %{REQUEST_URI} wp-content/uploads/[^\/]*/.*$
+	RewriteRule ^(.*)$ {PRODUCTION_SITE}$1 [QSA,L]
+	
+</IfModule>
