@@ -76,9 +76,11 @@ E' consigliato clonare il progetto e testare le modifiche in locale, prima di me
 
 * #### Inizializzare repository sul sito in produzione
  (_git_ deve essere stato già installato)
+
 ```
 git init
 ```
+
 * #### .gitignore
   Creare il file .gitignore, e aggiungere sotto forma di espressioni regolari le cartelle di cui non è necessario mantenere il tracciamento (es. vedi foto -- NON ICONE o img necessarie -- , file binari, eseguibili, mp3, dati ecc.)
 
@@ -86,24 +88,22 @@ git init
 
   Spesso si vengono a creare dei file pesanti che non dovrebbero essere utili. Per un check di questi, possiamo lanciare da shell ssh sul server questo comando (dopo esserci portati nella root del file system -- solitamente in /var/www/html):
 
-   ```
+```
 find . -type f -size +2M \( ! -iname "*.php" ! -iname "*.js" ! -iname "*.css" ! -iname "*.html" \);
-   ```  
+```  
 
-   Questo comando trova nella cartella attuale e nelle sottocartelle i file più grandi di 2M.
+Questo comando trova nella cartella attuale e nelle sottocartelle i file più grandi di 2M, ed esclude dalla ricerca i file php, js ecc.
 
-   Questo comando invece esclude dalla ricerca i file php, js ecc.
-
-   Una volta individuati i file da voler mantenere o ignorare nel primo commit, li aggiungiamo al .gitignore utilizzato di default.
+Una volta individuati i file da voler mantenere o ignorare nel primo commit, li aggiungiamo al .gitignore utilizzato di default.
 
 
 * #### Git add
 
-  __Solo quando si è sicuri di tutti i file che verranno aggiunti alla repository__ (e che quindi verranno presi da altre persone) lanciare il seguente comando per trasferire tutti i file ad eccezione di quelli nel gitignore nella staging area.
+__Solo quando si è sicuri di tutti i file che verranno aggiunti alla repository__ (e che quindi verranno presi da altre persone) lanciare il seguente comando per trasferire tutti i file ad eccezione di quelli nel gitignore nella staging area.
 
-   ```
-  cd {root fs} && git add .
-   ```
+```
+cd {root fs} && git add .
+```
 
 * #### Pushare la repo in remoto
 
